@@ -52,5 +52,10 @@
 Pour garder les traces, il faut sauvegarder la trace (.pcapng) et le fichier contenant les clés SSL qui permettront de décoder le contenu en mettant
 le paramètre "(Pre)-Master-Secret log filename" de Wireshark pointant vers ce fichier.
 
+Pour filtrer les traces ce filtre est utile :
+ip.addr==46.105.132.157 or ip.addr==46.105.132.156 or dns.qry.name==drive.shadow.tech
+
+Il permet de garder les requêtes DNS vers drive.shadow.tech et toutes les requêtes vers les 2 serveurs utilisés par Shadow Drive.
+
 # Référence
 * J'ai fait un zotero pour tout gérer plus facilement

@@ -45,3 +45,12 @@
 * Requetes toutes les 30 secondes environs pour synchronisation
 * 2 serveurs de dispos, l'appli en choisit un aléatoirement
 * Appli native et web a l'air d'avoir le mm comportement (mais on ne voit pas les requetes HTTPS à cause du SSLKEYLOGFILE qui ne fonctionnne que sur le navigateur web...)
+* Pas de différence entre Ethernet et Wifi
+
+# Traces
+
+Pour garder les traces, il faut sauvegarder la trace (.pcapng) et le fichier contenant les clés SSL qui permettront de décoder le contenu en mettant
+le paramètre "(Pre)-Master-Secret log filename" de Wireshark pointant vers ce fichier.
+
+# Référence
+* J'ai fait un zotero pour tout gérer plus facilement

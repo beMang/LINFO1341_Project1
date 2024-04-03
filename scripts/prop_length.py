@@ -4,7 +4,8 @@ import matplotlib.pyplot  as plt
 import sys
 from colorama import Fore
 
-filename = "traces/native/startup.pcapng"
+filename = "traces/web/transfer_new_file_49mb.pcapng"
+save_file = "prop_length_large_file.pdf"
 
 print(f"{Fore.GREEN}loading data")
 cap = pyshark.FileCapture(filename)
@@ -28,11 +29,12 @@ for pakcet_size, occurence in infos_occurence:
         size_array.append(pakcet_size)
         occurence_array.append(occurence)
     else:
+        #other size category for smaller occurence smaller than tolerance
         size_step_label=[
             [0,100,"0-100"],
-            [100,500,"100-500"],
-            [500,1000,"500-1000"],
-            [1000,5000, "1000-5000"],
+            [100,5000,"100-5000"],
+            #[500,1000,"500-1000"],
+            #[1000,5000, "1000-5000"],
             [5000, sys.maxsize, "5000+"]
         ]
         for step in size_step_label:
@@ -46,6 +48,5 @@ for pakcet_size, occurence in infos_occurence:
 
 print("plotting data :)")
 plt.figure("Longueur des paquets")
-plt.title("Pourcentage des paquets en fonction de leur taille")
 plt.pie(occurence_array, labels=size_array, autopct='%1.1f%%', colors=plt.cm.tab20.colors, wedgeprops={'linewidth': 1, 'edgecolor': 'white'})
-plt.show()
+plt.savefig("./plots/{}".format(save_file), bbox_inches='tight')
